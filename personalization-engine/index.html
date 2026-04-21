@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PersonaUI — Dynamic Personalization Engine</title>
+
+  <meta name="description" content="Real-time UI personalization engine using behavior-driven adaptive interfaces." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js (FIXED CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>🧠 PersonaUI</h2>
+
+    <button class="nav-btn" data-nav="home">🏠 Home</button>
+    <button class="nav-btn" data-nav="detector">🔍 Detector</button>
+    <button class="nav-btn" data-nav="engine">🧠 Engine</button>
+    <button class="nav-btn" data-nav="recs">✨ Recs</button>
+    <button class="nav-btn" data-nav="ab">🧪 A/B Lab</button>
+    <button class="nav-btn" data-nav="settings">⚙️ Settings</button>
+
+    <hr>
+    <div id="interest-badges"></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HOME -->
+    <section id="section-home" class="section">
+      <h1>Personalized Feed</h1>
+      <div id="content-feed"></div>
+    </section>
+
+    <!-- DETECTOR -->
+    <section id="section-detector" class="section">
+      <div class="detector-hero">
+        <h1 class="hero-title-neon">AI Analyzer</h1>
+        <p class="hero-subtitle">Detect misinformation with advanced AI pattern recognition.</p>
+      </div>
+      
+      <div class="detector-container glass-card">
+        <textarea id="detector-input" placeholder="Paste an article, claim, or news excerpt here to analyze..." rows="6"></textarea>
+        <button id="btn-detect" class="btn-primary neon-btn">
+          <span>Run Detection Analysis</span>
+          <div class="btn-glow"></div>
+        </button>
+        
+        <div id="detector-result" class="result-card hidden">
+          <div class="result-header">
+            <h2 id="result-label">Unknown</h2>
+            <div class="confidence-badge">
+              <span id="result-conf">0%</span>
+            </div>
+          </div>
+          <div class="result-bar-container">
+            <div id="result-bar-fill" class="result-bar-fill"></div>
+          </div>
+          <p id="result-explanation" class="result-explanation">Waiting for input...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGINE -->
+    <section id="section-engine" class="section">
+      <h1>Engine Dashboard</h1>
+
+      <canvas id="radar-chart" height="200"></canvas>
+
+      <div id="decision-log"></div>
+    </section>
+
+    <!-- RECS -->
+    <section id="section-recs" class="section">
+      <h1>Recommendations</h1>
+      <div id="rec-container"></div>
+    </section>
+
+    <!-- A/B -->
+    <section id="section-ab" class="section">
+      <h1>A/B Testing</h1>
+      <canvas id="ab-chart"></canvas>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="section-settings" class="section">
+      <h1>Settings</h1>
+      <div id="settings-interest-bars"></div>
+    </section>
+
+  </main>
+
+  <!-- SCRIPTS (IMPORTANT ORDER) -->
+  <script defer src="data/content.js"></script>
+  <script defer src="engine/tracker.js"></script>
+  <script defer src="engine/profiler.js"></script>
+  <script defer src="engine/decision.js"></script>
+  <script defer src="engine/personalizer.js"></script>
+  <script defer src="app.js"></script>
+
+  <!-- SAFE BOOT -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      console.log("PersonaUI loaded 🚀");
+    });
+  </script>
+
+</body>
+
+</html>
